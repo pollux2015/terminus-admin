@@ -5,6 +5,10 @@ import config from '../config/config';
 import apiurl from './apiurl';
 import store from './store';
 
+// 生产环境请注释次代码
+import mockConfig from './mockConfig.js'
+
+
 // 加载中组件
 let LoadTip = {
     msg: null,
