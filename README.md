@@ -32,7 +32,7 @@ $ npm run build
 * config/config 全局静态变量配置;
 ```
 
-### 已注入的模块, 组件内通过this访问相关
+### 5.已注入的模块, 组件内通过this访问相关
 ```
 接口模块: Vue.use(apis);
 this.$apis['funcName']
@@ -65,7 +65,7 @@ GET: this.$store.getters, SET: this.$store.commit(), Fetch: this.$store.dispatch
 ```
 https://vuex.vuejs.org/zh-cn/
 
-### Response数据约定
+### 6.Response数据约定
 ```
 $ response 
 {
