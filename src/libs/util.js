@@ -3,7 +3,7 @@ import lodash from 'lodash';
 // 公共方法
 let util = {
     setTitle(title) {
-        title = title ? title : 'iView project';
+        title = title ? title : 'Terminus';
         window.document.title = title;
     },
     /**

@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import config from '../config/config';
+import apis from './apis';
 Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
@@ -10,6 +11,7 @@ const state = {
     siteName: '特斯联',
     metaName: '特斯联人脸识别系统',
     breadcrumb: [],
+    menus: [],
     basicUrl: config.basicUrl,
     docUrl: config.docUrl,
     pageSize: 25, // 分页
@@ -55,6 +57,7 @@ const getters = {
     basicUrl: state => state.basicUrl,
     docUrl: state => state.docUrl,
     breadcrumb: state => state.breadcrumb,
+    menus: state => state.menus,
     pageSize: state => state.pageSize,
     error: state => state.error,
     dateRangeOptions: state => state.dateRangeOptions,
@@ -63,6 +66,15 @@ const getters = {
 
 // actions
 const actions = {
+    getMenus({ commit, state }){
+        return apis.menus().then(res => {
+            commit('menus', res.data);
+            return res.code;
+        }).catch(res => {
+            commit('menus', []);
+            return res.code;
+        })
+    },
     storeBodyClient({ commit, state }) {
         const clientH = document.documentElement.clientHeight;
         commit('bodyClient', clientH - 150 > 200 ? clientH - 200 : 200);
@@ -76,6 +88,9 @@ const mutations = {
     },
     breadcrumb(state, breadcrumb) {
         state.breadcrumb = breadcrumb;
+    },
+    menus(state, menus) {
+        state.menus = menus;
     },
     upPageSize(state, pagesize) {
         state.pageSize = pagesize;
