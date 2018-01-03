@@ -50,7 +50,7 @@ export default {
         };
     },
     computed: {
-        copyright(){
+        copyright() {
             return this.$store.getters.copyright;
         },
         menusList() {
@@ -99,11 +99,19 @@ export default {
     margin: 15px 0;
 }
 
+.layout .layout-goback {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+}
+
 .layout .layout-main {
+    position: relative;
     padding: 0 20px;
 }
 
 .layout .layout-content {
+    overflow-y: auto;
     padding: 0 20px;
     min-height: 280px;
     border-radius: 4px;
@@ -166,7 +174,7 @@ export default {
     font-size: 22px;
 }
 
-.nav-item:hover{
+.nav-item:hover {
     background-color: #383f4e;
 }
 

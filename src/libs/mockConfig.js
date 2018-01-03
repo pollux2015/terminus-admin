@@ -79,3 +79,8 @@ Mock.mock(aipurl_.companyList, {
         }]
     }
 });
+
+Mock.mock(aipurl_.companyAdd, {
+    code: 1,
+    'msg': '添加成功'
+});

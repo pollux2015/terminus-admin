@@ -31,7 +31,7 @@ html,
 .layout {
     height: 100%;
 }
-
+.top-gap{padding: 20px 0;}
 
 /* tableFuncs */
 

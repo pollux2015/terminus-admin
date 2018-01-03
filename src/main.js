@@ -64,13 +64,13 @@ router.beforeEach((to, from, next) => {
 });
 
 router.onError((callback) => {
-    console.log(222)
     router.replace({
         name: 'error_404'
     });
 });
 
-router.afterEach((to) => {
+router.afterEach((to, form) => {
+
     const name = to.meta.title;
     store.commit('metaName', name);
     Util.setTitle(name);

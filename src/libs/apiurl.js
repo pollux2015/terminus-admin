@@ -9,4 +9,5 @@ export default {
     'menus': 'GET,/admin/index/menu',
 
     'companyList': 'GET,/admin/company/index',
+    'companyAdd': 'GET,/admin/company/add',
 };

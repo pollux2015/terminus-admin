@@ -1,4 +1,4 @@
-import Main from './views/Main.vue';
+import Main from './views/basic/Main.vue';
 
 // 不作为Main组件的子页面展示的页面单独写，如下
 export const loginRouter = {
@@ -7,7 +7,7 @@ export const loginRouter = {
     meta: {
         title: 'Login - 登录'
     },
-    component: resolve => { require(['./views/login.vue'], resolve); }
+    component: resolve => { require(['./views/basic/login.vue'], resolve); }
 };
 
 export const page404 = {
@@ -53,33 +53,44 @@ export const appRouter = [{
         path: 'company',
         meta: { title: '单位管理' },
         name: 'company',
-        component: resolve => { require(['./views/company.vue'], resolve); }
+        component: resolve => { require(['./views/company/company.vue'], resolve); }
     }, {
         path: 'face',
         meta: { title: '人脸管理' },
         name: 'face',
-        component: resolve => { require(['./views/face.vue'], resolve); }
+        component: resolve => { require(['./views/face/face.vue'], resolve); }
     }, {
         path: 'gate',
         meta: { title: '闸机管理' },
         name: 'gate',
-        component: resolve => { require(['./views/gate.vue'], resolve); }
+        component: resolve => { require(['./views/gate/gate.vue'], resolve); }
     }, {
         path: 'log',
         meta: { title: '通行日志' },
         name: 'log',
-        component: resolve => { require(['./views/log.vue'], resolve); }
+        component: resolve => { require(['./views/log/log.vue'], resolve); }
     }, {
         path: 'sys',
         meta: { title: '系统管理' },
         name: 'sys',
-        component: resolve => { require(['./views/sys.vue'], resolve); }
+        component: resolve => { require(['./views/sys/sys.vue'], resolve); }
     }]
 }];
+
+// 作为Main组件的子页面展示但是不在左侧菜单显示的路由写在otherRouter里
+export const otherRouter = {
+    path: '/',
+    name: 'otherRouter',
+    component: Main,
+    children: [
+        { path: 'company/add', meta: { title: '新增单位' }, name: 'company.add', component: resolve => { require(['./views/company/add.vue'], resolve); } },
+    ]
+};
 
 // 所有上面定义的路由都要写在下面的routers里
 export const routers = [
     loginRouter,
+    otherRouter,
     ...appRouter,
     page500,
     page401,
