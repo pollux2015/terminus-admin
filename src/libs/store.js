@@ -5,11 +5,12 @@ import apis from './apis';
 Vue.use(Vuex);
 
 const debug = process.env.NODE_ENV !== 'production';
-
+const fullYear = new Date().getFullYear();
 // states
 const state = {
     siteName: '特斯联',
     metaName: '特斯联人脸识别系统',
+    copyright: `2011-${fullYear} © Terminus/特斯联`,
     breadcrumb: [],
     menus: [],
     basicUrl: config.basicUrl,
@@ -54,6 +55,7 @@ const state = {
 const getters = {
     siteName: state => state.siteName,
     metaName: state => state.metaName,
+    copyright: state => state.copyright,
     basicUrl: state => state.basicUrl,
     docUrl: state => state.docUrl,
     breadcrumb: state => state.breadcrumb,
