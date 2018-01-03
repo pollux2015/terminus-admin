@@ -38,7 +38,7 @@
                     <router-view></router-view>
                 </Content>
             </Layout>
-            <Footer class="layout-footer">2011-2016 &copy; TalkingData</Footer>
+            <Footer class="layout-footer">{{copyright}}</Footer>
         </Layout>
     </div>
 </template>
@@ -50,6 +50,9 @@ export default {
         };
     },
     computed: {
+        copyright(){
+            return this.$store.getters.copyright;
+        },
         menusList() {
             return this.$store.getters.menus;
         },
@@ -101,7 +104,7 @@ export default {
 }
 
 .layout .layout-content {
-    padding: 20px 0;
+    padding: 0 20px;
     min-height: 280px;
     border-radius: 4px;
     background: #fff;

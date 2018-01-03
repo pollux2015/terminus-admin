@@ -6,5 +6,7 @@ export default {
     // Common
     'login': 'POST,/admin/index/login',
     'logout': 'POST,/admin/index/logout',
-    'menus': 'GET,/admin/index/menu'
+    'menus': 'GET,/admin/index/menu',
+
+    'companyList': 'GET,/admin/company/index',
 };

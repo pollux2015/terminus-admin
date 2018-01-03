@@ -12,6 +12,13 @@ const url = lodash.forEach(aipurl, (item, key) => {
 
 // 静态变量
 const CUR_DATE = Mock.mock('@date');
+const PAGE = {
+    'total|1-15': 1,
+    'page|1-15': 1,
+    'cur|1-10': 1,
+    'pagesize': 3,
+    'pages|1-15': 1
+}
 
 Mock.mock(aipurl_.login, {
     code: 1,
@@ -56,4 +63,19 @@ Mock.mock(aipurl_.menus, {
         icon: 'gear-a',
         name: '系统管理'
     }]
+});
+
+
+Mock.mock(aipurl_.companyList, {
+    code: 1,
+    data: {
+        page: PAGE,
+        'data|25': [{
+            'id': '@id',
+            'company|1': ['深圳市一只牛科技有限公司', '深圳市盛大有限公司', '深圳市腾达科技有限公司'],
+            'contact|1': '@cname',
+            'phone|1': ['18664356411', '18975626643', '17707368249'],
+            'tenancy|1-100': 100
+        }]
+    }
 });
