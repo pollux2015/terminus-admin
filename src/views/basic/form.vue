@@ -53,6 +53,12 @@
                     <vue-core-image-upload text="上传头像" cropRatio="1:1" @uploaded="imageUploaded">
                     </vue-core-image-upload>
                 </Form-item>
+                <Form-item label="发布状态" prop="status">
+                    <i-switch size="large" v-model="switchStatus" @on-change="changeSwitch">
+                        <span slot="open">发布</span>
+                        <span slot="close">下线</span>
+                    </i-switch>
+                </Form-item>
                 <div class="form-footer">
                     <Button size="large" :type="isEdit ? 'error' : 'primary'" icon="checkmark-circled" @click="handleSubmit('formData')">提交</Button>
                     <Button size="large" type="ghost" icon="refresh" @click="handleReset('formData')" style="margin-left: 8px">重置</Button>

@@ -19,9 +19,15 @@ export default {
     'logDel': 'GET,/admin/log/delete',
 
     // 闸机管理
-    'gateGroupAll': 'GET,/gate/groupall',
     'gateGroup': 'GET,/gate/group',
-    'gateGroupDel': 'GET,/gate/group/del',
+    'gateGroupAll': 'GET,/gategroup/groupall',
+    'gateGroupInfo': 'GET,/gategroup/info',
+    'gateGroupEdit': 'GET,/gategroup/edit',
+    'gateGroupDel': 'GET,/gategroup/del',
+
     'gateList': 'GET,/gate/list',
+    'gateAll': 'GET,/gate/all',
+    'gateInfo': 'GET,/gate/info',
+    'gateEdit': 'GET,/gate/edit',
     'gateDel': 'GET,/gate/delete',
 };

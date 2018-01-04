@@ -85,10 +85,10 @@ export const otherRouter = {
     children: [
         { path: 'company/add', meta: { title: '新增单位' }, name: 'company.add', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
         { path: 'company/edit/:id', meta: { title: '编辑单位' }, name: 'company.edit', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
-        { path: 'gate/add', meta: { title: '新增闸机' }, name: 'gate.add', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
-        { path: 'gate/edit/:id', meta: { title: '编辑闸机' }, name: 'gate.edit', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
-        { path: 'gategroup/add', meta: { title: '新增闸机组' }, name: 'gategroup.add', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
-        { path: 'gategroup/edit/:id', meta: { title: '编辑闸机组' }, name: 'gategroup.edit', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
+        { path: 'gate/add', meta: { title: '新增闸机' }, name: 'gate.add', component: resolve => { require(['./views/gate/gate.edit.vue'], resolve); } },
+        { path: 'gate/edit/:id', meta: { title: '编辑闸机' }, name: 'gate.edit', component: resolve => { require(['./views/gate/gate.edit.vue'], resolve); } },
+        { path: 'gategroup/add', meta: { title: '新增闸机组' }, name: 'gategroup.add', component: resolve => { require(['./views/gate/group.edit.vue'], resolve); } },
+        { path: 'gategroup/edit/:id', meta: { title: '编辑闸机组' }, name: 'gategroup.edit', component: resolve => { require(['./views/gate/group.edit.vue'], resolve); } },
     ]
 };
 

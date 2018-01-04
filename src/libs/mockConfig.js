@@ -138,7 +138,7 @@ Mock.mock(aipurl_.logDel, {
  * 闸机管理
  -----------------------------------*/
 
- Mock.mock(aipurl_.gateGroupAll, {
+Mock.mock(aipurl_.gateGroupAll, {
     code: 1,
     'data': [{
         'id': '1',
@@ -171,6 +171,21 @@ Mock.mock(aipurl_.gateGroupDel, {
     'msg': '删除成功'
 });
 
+
+Mock.mock(aipurl_.gateGroupEdit, {
+    code: 1,
+    'msg': '编辑成功'
+});
+
+Mock.mock(aipurl_.gateGroupInfo, {
+    code: 1,
+    'data': {
+        'id': '@id',
+        'name|1': ['闸机组A', '闸机组B', '闸机组C'],
+        'gates': '1,2'
+    }
+});
+
 Mock.mock(aipurl_.gateList, {
     code: 1,
     data: {
@@ -186,9 +201,32 @@ Mock.mock(aipurl_.gateList, {
     }
 });
 
+Mock.mock(aipurl_.gateAll, {
+    code: 1,
+    'data|4': [{
+        'id|+1': ['1', '2', '3', '4'],
+        'name|+1': ['东大门1号闸', '西大门2号闸', '南大门4号闸', '北大门5号闸'],
+    }]
+});
+
+Mock.mock(aipurl_.gateInfo, {
+    code: 1,
+    'data': {
+        'id': '@id',
+        'name|1': ['闸机1', '闸机2', '闸机3'],
+        'gate_group': '1',
+        'ip': '@ip',
+        'port': '8088',
+        'face_status|1': ['0', '1']
+    }
+});
+
+Mock.mock(aipurl_.gateEdit, {
+    code: 1,
+    'msg': '编辑成功'
+});
+
 Mock.mock(aipurl_.gateDel, {
     code: 1,
     'msg': '删除成功'
 });
-
-
