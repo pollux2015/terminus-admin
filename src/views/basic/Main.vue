@@ -15,7 +15,6 @@
                             <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
                             <DropdownMenu slot="list">
                                 <DropdownItem>设置</DropdownItem>
-                                <DropdownItem>个人资料</DropdownItem>
                                 <DropdownItem>退出系统</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
