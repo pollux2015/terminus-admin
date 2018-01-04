@@ -8,6 +8,10 @@ export default {
     'logout': 'POST,/admin/index/logout',
     'menus': 'GET,/admin/index/menu',
 
+
+		'gateList': 'GET,/admin/gate/list',
     'companyList': 'GET,/admin/company/index',
-    'companyAdd': 'GET,/admin/company/add',
+    'companyInfo': 'GET,/admin/company/info',
+    'companyEdit': 'GET,/admin/company/edit',
+    'companyDel': 'GET,/admin/company/delete',
 };

@@ -8,12 +8,12 @@
                     <Input icon="search" style="width: 200px;" v-model="queryParams.keyword" placeholder="专题名称" @on-click="getData(1)" @on-enter="getData(1)"></Input>
                     </Col>
                     <Col span="6" class="tableFuncs">
-                    	<Button-group shape="circle">
-			                <Button type="primary" icon="plus-circled" @click="goRouter('company.add')">
-			                    新增单位
-			                </Button>
-			                <Button title="重置" @click="resetFilter" icon="loop">重置</Button>
-			            </Button-group>
+                    <Button-group shape="circle">
+                        <Button type="primary" icon="plus-circled" @click="goRouter('company.add')">
+                            新增单位
+                        </Button>
+                        <Button title="重置" @click="resetFilter" icon="loop">重置</Button>
+                    </Button-group>
                     </Col>
                 </Row>
             </div>
@@ -61,11 +61,11 @@ export default {
                 align: 'center',
                 width: 160,
                 render: (h, params) => {
-                	const row = params.row;
-                	return this.$util.phoneFormat(row.phone, '-')
+                    const row = params.row;
+                    return this.$util.phoneFormat(row.phone, '-')
                 }
             }, {
-                title: '租期',
+                title: '租期(月)',
                 width: 140,
                 align: 'center',
                 render: (h, params) => {
@@ -87,7 +87,7 @@ export default {
                         icon: 'edit',
                         text: '编辑',
                         click: () => {
-                            this.goRouter('edit', {
+                            this.goRouter('company.edit', {
                                 id: row.id
                             })
                         }
@@ -120,7 +120,7 @@ export default {
         // 跳转到指定ROUTER
         goRouter(name, params, query) {
             const params_ = params || {};
-            const query_ = params || {};
+            const query_ = query || {};
             this.$router.push({
                 name: name,
                 query: query_,
@@ -157,13 +157,16 @@ export default {
             const row = this.activeParams.row;
             this.$Modal.confirm({
                 title: '确认删除?',
-                content: row.name,
+                content: row.company,
                 loading: true,
                 onOk: () => {
-                    setTimeout(res => {
+                    this.$apis.companyDel({
+                        id: row.id
+                    }).then(res => {
+                        console.log(res)
                         this.$util.delTableActive(this, '删除成功');
                         this.$Modal.remove();
-                    }, 1000)
+                    });
                 }
             })
         }

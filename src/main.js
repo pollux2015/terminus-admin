@@ -79,7 +79,7 @@ router.afterEach((to, form) => {
 });
 
 
-new Vue({
+window.app = new Vue({
     el: '#app',
     router: router,
     store: store,

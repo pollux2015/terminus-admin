@@ -83,7 +83,8 @@ export const otherRouter = {
     name: 'otherRouter',
     component: Main,
     children: [
-        { path: 'company/add', meta: { title: '新增单位' }, name: 'company.add', component: resolve => { require(['./views/company/add.vue'], resolve); } },
+        { path: 'company/add', meta: { title: '新增单位' }, name: 'company.add', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
+        { path: 'company/edit/:id', meta: { title: '编辑单位' }, name: 'company.edit', component: resolve => { require(['./views/company/edit.vue'], resolve); } },
     ]
 };
 

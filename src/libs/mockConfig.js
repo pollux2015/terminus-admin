@@ -65,6 +65,19 @@ Mock.mock(aipurl_.menus, {
     }]
 });
 
+Mock.mock(aipurl_.gateList, {
+    code: 1,
+    'data': [{
+        'id': '1',
+        'name': '闸机1'
+    }, {
+        'id': '2',
+        'name': '闸机2'
+    }, {
+        'id': '3',
+        'name': '闸机3'
+    }]
+});
 
 Mock.mock(aipurl_.companyList, {
     code: 1,
@@ -74,13 +87,33 @@ Mock.mock(aipurl_.companyList, {
             'id': '@id',
             'company|1': ['深圳市一只牛科技有限公司', '深圳市盛大有限公司', '深圳市腾达科技有限公司'],
             'contact|1': '@cname',
-            'phone|1': ['18664356411', '18975626643', '17707368249'],
+            'phone|1': ['18664356411', '18975626643', '18607368249'],
             'tenancy|1-100': 100
         }]
     }
 });
 
-Mock.mock(aipurl_.companyAdd, {
+Mock.mock(aipurl_.companyInfo, {
     code: 1,
-    'msg': '添加成功'
+    'data': {
+        'id': '@id',
+        'company|1': ['深圳市一只牛科技有限公司', '深圳市盛大有限公司', '深圳市腾达科技有限公司'],
+        'contact|1': '@cname',
+        'phone|1': ['18664356411', '18975626643', '18607368249'],
+        'floor|1': ['A栋b11', 'A栋B12'],
+        'gate': '1,2',
+        tenancy: '这里是租期的介绍',
+        start_time: '2018-01-01',
+        end_time: '2018-06-06'
+    }
+});
+
+Mock.mock(aipurl_.companyEdit, {
+    code: 1,
+    'msg': '编辑成功'
+});
+
+Mock.mock(aipurl_.companyDel, {
+    code: 1,
+    'msg': '删除成功'
 });
