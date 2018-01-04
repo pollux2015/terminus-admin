@@ -27,7 +27,7 @@
                     </Select>
                 </Form-item>
                 <Form-item label="通行有效期" prop="start_time">
-                    <Date-picker ref="dateRange" v-model="dateRangeValue" type="daterange" format="yyyy-MM-dd" @on-change="dateChange" @on-clear="dateClear" :options="rangeOptions" placement="bottom-start" placeholder="最后提交时间"></Date-picker>
+                    <Date-picker ref="dateRange" v-model="dateRangeValue" type="daterange" format="yyyy-MM-dd" @on-change="dateChange" @on-clear="dateClear" :options="rangeOptions" style="width: 200px;" placement="bottom-start" placeholder="最后提交时间"></Date-picker>
                 </Form-item>
                 <div class="form-footer">
                     <Button size="large" :type="isEdit ? 'error' : 'primary'" icon="checkmark-circled" @click="handleSubmit('formData')">提交</Button>
