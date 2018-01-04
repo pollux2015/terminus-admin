@@ -179,7 +179,7 @@ export default {
                         } else {
                             this.submitBack();
                         }
-                        this.$Message.success(this.isEdit ? '编辑成功' : '保存成功!');
+                        this.$Message.success(this.isEdit ? '编辑成功' : '添加成功!');
                     });
                 }
             })
