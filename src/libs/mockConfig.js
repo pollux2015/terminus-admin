@@ -70,20 +70,6 @@ Mock.mock(aipurl_.menus, {
  * 单位管理
  -----------------------------------*/
 
-Mock.mock(aipurl_.gateList, {
-    code: 1,
-    'data': [{
-        'id': '1',
-        'name': '闸机1'
-    }, {
-        'id': '2',
-        'name': '闸机2'
-    }, {
-        'id': '3',
-        'name': '闸机3'
-    }]
-});
-
 Mock.mock(aipurl_.companyList, {
     code: 1,
     data: {
@@ -146,4 +132,63 @@ Mock.mock(aipurl_.logDel, {
     code: 1,
     'msg': '删除成功'
 });
+
+
+/**-----------------------------------
+ * 闸机管理
+ -----------------------------------*/
+
+ Mock.mock(aipurl_.gateGroupAll, {
+    code: 1,
+    'data': [{
+        'id': '1',
+        'name': '闸机组1'
+    }, {
+        'id': '2',
+        'name': '闸机组2'
+    }, {
+        'id': '3',
+        'name': '闸机组3'
+    }]
+});
+
+
+Mock.mock(aipurl_.gateGroup, {
+    code: 1,
+    data: {
+        page: PAGE,
+        'data|25': [{
+            'id': '@id',
+            'name|1': ['闸机组A', '闸机组B', '闸机组C'],
+            'gates|1': ['东大门1号闸,西大门2号闸', '南大门4号闸, 北大门5号闸'],
+            'created_time': '@datetime'
+        }]
+    }
+});
+
+Mock.mock(aipurl_.gateGroupDel, {
+    code: 1,
+    'msg': '删除成功'
+});
+
+Mock.mock(aipurl_.gateList, {
+    code: 1,
+    data: {
+        page: PAGE,
+        'data|25': [{
+            'id': '@id',
+            'name|1': ['东大门1号闸', '西大门2号闸', '南大门4号闸', '北大门5号闸'],
+            'ip': '@ip',
+            'status|+1': ['0', '1'],
+            'status_msg|+1': ['通信异常', '通信正常'],
+            'face_status|1': ['0', '1']
+        }]
+    }
+});
+
+Mock.mock(aipurl_.gateDel, {
+    code: 1,
+    'msg': '删除成功'
+});
+
 

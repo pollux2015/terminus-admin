@@ -23,7 +23,7 @@
                 </Form-item>
                 <Form-item label="可通行闸机组" prop="gate">
                     <Select v-model="formData.gate" multiple filterable>
-                        <Option :value="gate.id" :key="gate.id" v-for="gate in gateList" :label="gate.name"></Option>
+                        <Option :value="gate.id" :key="gate.id" v-for="gate in gateGroupList" :label="gate.name"></Option>
                     </Select>
                 </Form-item>
                 <Form-item label="通行有效期" prop="start_time">
@@ -44,7 +44,7 @@ export default {
             dateRangeValue: [], // 日历范围控件
             rangeOptions: this.$store.getters.dateRangeOptions, // 日历控件参数
             editInfor: {}, // 表单详情
-            gateList: [],
+            gateGroupList: [],
             formData: { // 表单提交Data
                 id: '',
                 company: '',
@@ -96,9 +96,9 @@ export default {
     },
     beforeRouteEnter: (to, from, next) => {
         const isEdit = to.name === 'company.edit';
-        app.$apis.gateList().then(res => {
+        app.$apis.gateGroupAll().then(res => {
             next(app => {
-                app.setGateList(res.data || [])
+                app.setGateGroupAll(res.data || [])
             })
         });
     },
@@ -124,8 +124,8 @@ export default {
                 name: 'company'
             });
         },
-        setGateList(data) {
-            this.gateList = data || [];
+        setGateGroupAll(data) {
+            this.gateGroupList = data || [];
         },
         setInfo() {
             var editInfor = this.$util.assign({}, this.editInfor);
