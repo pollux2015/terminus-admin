@@ -23,7 +23,7 @@
             </Header>
             <Layout class="layout-main">
                 <Breadcrumb class="layout-breadcrumd">
-                    <BreadcrumbItem href="/" v-if="routeName != 'home.index'">
+                    <BreadcrumbItem href="/app/home">
                         <Icon type="ios-home-outline"></Icon> 首页
                     </BreadcrumbItem>
                     <BreadcrumbItem :key="item.href" v-for="item in breadcrumb" :href="item.href">
