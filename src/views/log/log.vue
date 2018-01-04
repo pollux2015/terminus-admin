@@ -4,7 +4,7 @@
         <div class="tableTools">
             <div class="tableTools-inner">
                 <Row class="tableTools-inner">
-                    <Col span="21">
+                    <Col span="24">
                     <Form ref="queryForm" :label-width="70" label-position="left" inline>
                         <Form-item label="单位/员工">
                             <Input icon="search" style="width: 200px;" v-model="queryParams.keyword" placeholder="请输入单位/员工" @on-click="getData(1)" @on-enter="getData(1)"></Input>
@@ -39,12 +39,12 @@
                                 <Option value="3" label="人脸识别"></Option>
                             </Select>
                         </Form-item>
+                        <Form-item label="" :label-width="1">
+                            <Button-group shape="circle">
+                                <Button title="重置" @click="resetFilter" icon="loop">重置</Button>
+                            </Button-group>
+                        </Form-item>
                     </Form>
-                    </Col>
-                    <Col span="3" class="tableFuncs">
-                    <Button-group shape="circle">
-                        <Button title="重置" @click="resetFilter" icon="loop">重置</Button>
-                    </Button-group>
                     </Col>
                 </Row>
             </div>
