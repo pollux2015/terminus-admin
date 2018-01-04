@@ -102,6 +102,12 @@ let util = {
         // 合并参数
         const params_ = lodash.assign(defaultParams, contxt.queryParams, options);
         return contxt.$apis[options.methodName](params_).then(res => {
+
+            // table都滚动到顶部
+            var tableEle = document.querySelector('.ivu-table-body');
+            if(tableEle){
+                tableEle.scrollTop = 0
+            }
             // 设置table值
             contxt.tableData = res.data.data;
             contxt.page = res.data.page || {};
