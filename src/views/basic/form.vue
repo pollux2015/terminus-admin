@@ -67,7 +67,7 @@ export default {
         return {
             switchStatus: true, // switch
             dateValue: '', // 日历控件
-            dateRangeValue: '', // 日历范围控件
+            dateRangeValue: [], // 日历范围控件
             rangeOptions: this.$store.getters.dateRangeOptions, // 日历控件参数
             editInfor: {}, // 表单详情
             formData: { // 表单提交Data

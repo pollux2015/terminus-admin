@@ -88,4 +88,17 @@ html,
     position: absolute;
     left: 0;
 }
+
+/*table-pic*/
+.table-pic{
+    display: block;
+    padding: 10px;
+    width: 100%;
+}
+
+/*table-pic*/
+.table-pic img{
+    display: block;
+    width: 100%;
+}
 </style>

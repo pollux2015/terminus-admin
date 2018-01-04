@@ -65,6 +65,11 @@ Mock.mock(aipurl_.menus, {
     }]
 });
 
+
+/**-----------------------------------
+ * 单位管理
+ -----------------------------------*/
+
 Mock.mock(aipurl_.gateList, {
     code: 1,
     'data': [{
@@ -117,3 +122,28 @@ Mock.mock(aipurl_.companyDel, {
     code: 1,
     'msg': '删除成功'
 });
+
+
+/**-----------------------------------
+ * 通行日志
+ -----------------------------------*/
+Mock.mock(aipurl_.logHistory, {
+    code: 1,
+    data: {
+        page: PAGE,
+        'data|25': [{
+            'id': '@id',
+            'name|1': '@cname',
+            'gate|1': ['东大门1号闸', '西大门2号闸', '北大门3号闸'],
+            'start_time': '@datetime',
+            'picture|1': ['https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3899479166,21487512&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=294991083,4059654018&fm=27&gp=0.jpg'],
+            'video': 'http://source1.uooconline.com/course695/video//2%E5%88%8629.mp4'
+        }]
+    }
+});
+
+Mock.mock(aipurl_.logDel, {
+    code: 1,
+    'msg': '删除成功'
+});
+
