@@ -69,6 +69,13 @@ Mock.mock(aipurl_.menus, {
 /**-----------------------------------
  * 单位管理
  -----------------------------------*/
+Mock.mock(aipurl_.companyAll, {
+    code: 1,
+    'data|3': [{
+        'id|+1': ['1', '2', '3'],
+        'name|+1': ['深圳市一只牛科技有限公司', '深圳市盛大有限公司', '深圳市腾达科技有限公司']
+    }]
+});
 
 Mock.mock(aipurl_.companyList, {
     code: 1,
@@ -122,7 +129,7 @@ Mock.mock(aipurl_.logHistory, {
             'name|1': '@cname',
             'gate|1': ['东大门1号闸', '西大门2号闸', '北大门3号闸'],
             'start_time': '@datetime',
-            'picture|1': ['https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3899479166,21487512&fm=27&gp=0.jpg', 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=294991083,4059654018&fm=27&gp=0.jpg'],
+            'picture|1': ['http://img.zcool.cn/community/01f6075a4defa1a8012197417988f6.jpg', 'http://img.zcool.cn/community/018eaf5a4defaea80121974199542b.jpg@1280w_1l_2o_100sh.jpg'],
             'video': 'http://source1.uooconline.com/course695/video//2%E5%88%8629.mp4'
         }]
     }
@@ -135,7 +142,7 @@ Mock.mock(aipurl_.logDel, {
 
 
 /**-----------------------------------
- * 闸机管理
+ * 闸机组管理
  -----------------------------------*/
 
 Mock.mock(aipurl_.gateGroupAll, {
@@ -186,6 +193,10 @@ Mock.mock(aipurl_.gateGroupInfo, {
     }
 });
 
+/**-----------------------------------
+ * 闸机管理
+ -----------------------------------*/
+
 Mock.mock(aipurl_.gateList, {
     code: 1,
     data: {
@@ -229,4 +240,61 @@ Mock.mock(aipurl_.gateEdit, {
 Mock.mock(aipurl_.gateDel, {
     code: 1,
     'msg': '删除成功'
+});
+
+/**-----------------------------------
+ * 人脸管理
+'faceList': 'GET,/face/list',
+'faceInfo': 'GET,/face/info',
+'faceEdit': 'GET,/face/edit',
+'faceDel': 'GET,/face/delete',
+'faceFrozen': 'GET,/face/frozen',
+ -----------------------------------*/
+
+Mock.mock(aipurl_.faceList, {
+    code: 1,
+    data: {
+        page: PAGE,
+        'data|25': [{
+            'id': '@id',
+            'name': '@cname',
+            'company|1': ['深圳市一只牛科技有限公司', '深圳市盛大有限公司', '深圳市腾达科技有限公司'],
+            'phone|1': ['18664356411', '18975626643', '18607368249'],
+            'status|+1': ['0', '1'],
+            // 'status_msg|+1': ['异常', '正常'],
+            'face_status|1': ['0', '1'],
+            'frozen|1': ['0', '1']
+        }]
+    }
+});
+
+Mock.mock(aipurl_.faceInfo, {
+    code: 1,
+    'data': {
+        'id': '@id',
+        'name': '@cname',
+        'phone|1': ['18664356411', '18975626643', '18607368249'],
+        'card': '@id',
+        'company': '1',
+        'gates': '1,2',
+        'start_time': '2018-01-01',
+        'end_time': '2018-06-06',
+        'pass_time|1-100': 1, 
+        'face_group|1': 'http://img.zcool.cn/community/01f6075a4defa1a8012197417988f6.jpg,http://img.zcool.cn/community/018eaf5a4defaea80121974199542b.jpg@1280w_1l_2o_100sh.jpg',
+    }
+});
+
+Mock.mock(aipurl_.faceEdit, {
+    code: 1,
+    'msg': '编辑成功'
+});
+
+Mock.mock(aipurl_.faceDel, {
+    code: 1,
+    'msg': '删除成功'
+});
+
+Mock.mock(aipurl_.faceFrozen, {
+    code: 1,
+    'msg': '冻结成功'
 });
