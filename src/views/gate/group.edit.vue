@@ -5,7 +5,6 @@
         </Button>
         <div class="form-outer">
             <h2 class="form-header">{{metaName}}</h2>
-            {{formData}}
             <Form ref="formData" :model="formData" :rules="ruleValidate" :label-width="100">
                 <Form-item label="闸机组名称" prop="name">
                     <Input v-model.trim="formData.name" placeholder="请输入"></Input>
@@ -70,7 +69,6 @@ export default {
             this.$apis.gateGroupInfo({
                 id: this.$route.params.id
             }).then(res => {
-                console.log(res.data)
                 this.editInfor = res.data;
                 this.setInfo();
             });
