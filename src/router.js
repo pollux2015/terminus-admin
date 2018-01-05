@@ -91,6 +91,10 @@ export const otherRouter = {
         { path: 'gategroup/edit/:id', meta: { title: '编辑闸机组' }, name: 'gategroup.edit', component: resolve => { require(['./views/gate/group.edit.vue'], resolve); } },
         { path: 'face/add', meta: { title: '新增用户' }, name: 'face.add', component: resolve => { require(['./views/face/edit.vue'], resolve); } },
         { path: 'face/edit/:id', meta: { title: '编辑用户' }, name: 'face.edit', component: resolve => { require(['./views/face/edit.vue'], resolve); } },
+        { path: 'role/add', meta: { title: '新增角色' }, name: 'role.add', component: resolve => { require(['./views/sys/role.edit.vue'], resolve); } },
+        { path: 'role/edit/:id', meta: { title: '编辑角色' }, name: 'role.edit', component: resolve => { require(['./views/sys/role.edit.vue'], resolve); } },
+        { path: 'admin/add', meta: { title: '新增后台用户' }, name: 'admin.add', component: resolve => { require(['./views/sys/admin.edit.vue'], resolve); } },
+        { path: 'admin/edit/:id', meta: { title: '编辑后台用户' }, name: 'admin.edit', component: resolve => { require(['./views/sys/admin.edit.vue'], resolve); } },
     ]
 };
 

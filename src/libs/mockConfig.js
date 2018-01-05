@@ -20,6 +20,14 @@ const PAGE = {
     'pages|1-15': 1
 }
 
+
+/**-----------------------------------
+ * common
+ 'login': 'POST,/admin/index/login',
+ 'logout': 'POST,/admin/index/logout',
+ 'menus': 'GET,/admin/index/menu',
+ -----------------------------------*/
+
 Mock.mock(aipurl_.login, {
     code: 1,
     'msg': '登陆成功'
@@ -68,6 +76,11 @@ Mock.mock(aipurl_.menus, {
 
 /**-----------------------------------
  * 单位管理
+ 'companyAll': 'GET,/admin/company/all',
+ 'companyList': 'GET,/admin/company/index',
+ 'companyInfo': 'GET,/admin/company/info',
+ 'companyEdit': 'GET,/admin/company/edit',
+ 'companyDel': 'GET,/admin/company/delete',
  -----------------------------------*/
 Mock.mock(aipurl_.companyAll, {
     code: 1,
@@ -119,6 +132,8 @@ Mock.mock(aipurl_.companyDel, {
 
 /**-----------------------------------
  * 通行日志
+ 'logHistory': 'GET,/admin/log/history',
+ 'logDel': 'GET,/admin/log/delete',
  -----------------------------------*/
 Mock.mock(aipurl_.logHistory, {
     code: 1,
@@ -143,6 +158,11 @@ Mock.mock(aipurl_.logDel, {
 
 /**-----------------------------------
  * 闸机组管理
+ 'gateGroup': 'GET,/gate/group',
+ 'gateGroupAll': 'GET,/gategroup/groupall',
+ 'gateGroupInfo': 'GET,/gategroup/info',
+ 'gateGroupEdit': 'GET,/gategroup/edit',
+ 'gateGroupDel': 'GET,/gategroup/del',
  -----------------------------------*/
 
 Mock.mock(aipurl_.gateGroupAll, {
@@ -195,6 +215,11 @@ Mock.mock(aipurl_.gateGroupInfo, {
 
 /**-----------------------------------
  * 闸机管理
+ 'gateList': 'GET,/gate/list',
+ 'gateAll': 'GET,/gate/all',
+ 'gateInfo': 'GET,/gate/info',
+ 'gateEdit': 'GET,/gate/edit',
+ 'gateDel': 'GET,/gate/delete',
  -----------------------------------*/
 
 Mock.mock(aipurl_.gateList, {
@@ -244,11 +269,11 @@ Mock.mock(aipurl_.gateDel, {
 
 /**-----------------------------------
  * 人脸管理
-'faceList': 'GET,/face/list',
-'faceInfo': 'GET,/face/info',
-'faceEdit': 'GET,/face/edit',
-'faceDel': 'GET,/face/delete',
-'faceFrozen': 'GET,/face/frozen',
+ 'faceList': 'GET,/face/list',
+ 'faceInfo': 'GET,/face/info',
+ 'faceEdit': 'GET,/face/edit',
+ 'faceDel': 'GET,/face/delete',
+ 'faceFrozen': 'GET,/face/frozen',
  -----------------------------------*/
 
 Mock.mock(aipurl_.faceList, {
@@ -298,3 +323,113 @@ Mock.mock(aipurl_.faceFrozen, {
     code: 1,
     'msg': '冻结成功'
 });
+
+/**-----------------------------------
+ * 角色管理
+ 'roleAll': 'GET,/role/all',
+ 'roleList': 'GET,/role/list',
+ 'roleInfo': 'GET,/role/info',
+ 'roleEdit': 'GET,/role/edit',
+ 'roleDel': 'GET,/role/delete',
+ -----------------------------------*/
+Mock.mock(aipurl_.roleAll, {
+    code: 1,
+    'data|3': [{
+        'id|+1': [1, 2, 3],
+        'name|+1': ['系统管理员', '1号楼保安组', '1号楼B座前台']
+    }]
+});
+
+Mock.mock(aipurl_.roleList, {
+    code: 1,
+    data: {
+        page: PAGE,
+        'data|25': [{
+            'id': '@id',
+            'name|1': ['系统管理员', '1号楼保安组', '1号楼B座前台'],
+            'update_time': '@datetime',
+            'status|1': [0, 1],
+            'apply': '保安-邓超,前台-杨幂,物业-胡歌'
+        }]
+    }
+});
+
+Mock.mock(aipurl_.roleInfo, {
+    code: 1,
+    'data': {
+        'id': '@id',
+        'name': '@cname',
+        'limits': '1,3,4', 
+        'status|1': [1, 0]
+    }
+});
+
+Mock.mock(aipurl_.roleEdit, {
+    code: 1,
+    'msg': '编辑成功'
+});
+
+Mock.mock(aipurl_.roleDel, {
+    code: 1,
+    'msg': '删除成功'
+});
+
+
+
+/**-----------------------------------
+ * 后台用户管理
+ 'adminList': 'GET,/admin/list',
+ 'adminInfo': 'GET,/admin/info',
+ 'adminEdit': 'GET,/admin/edit',
+ 'adminDel': 'GET,/admin/delete',
+ 'adminFrozen': 'GET,/admin/frozen',
+ -----------------------------------*/
+ Mock.mock(aipurl_.adminList, {
+    code: 1,
+    data: {
+        page: PAGE,
+        'data|25': [{
+            'id': '@id',
+            'name': '@cname',
+            'email': '@email',
+            'created_time': '@datetime',
+            'status|1': [0, 1]
+        }]
+    }
+});
+
+Mock.mock(aipurl_.adminInfo, {
+    code: 1,
+    'data': {
+        'id': '@id',
+        'name': '@cname',
+        'phone|1': ['18664356411', '18975626643', '18607368249'],
+        'card': '@id',
+        'company': '1',
+        'gates': '1,2',
+        'start_time': '2018-01-01',
+        'end_time': '2018-06-06',
+        'pass_time|1-100': 1, 
+        'face_group|1': 'http://img.zcool.cn/community/01f6075a4defa1a8012197417988f6.jpg,http://img.zcool.cn/community/018eaf5a4defaea80121974199542b.jpg@1280w_1l_2o_100sh.jpg',
+    }
+});
+
+Mock.mock(aipurl_.adminEdit, {
+    code: 1,
+    'msg': '编辑成功'
+});
+
+Mock.mock(aipurl_.adminDel, {
+    code: 1,
+    'msg': '删除成功'
+});
+
+Mock.mock(aipurl_.adminFrozen, {
+    code: 1,
+    'msg': '冻结成功'
+});
+
+
+
+
+

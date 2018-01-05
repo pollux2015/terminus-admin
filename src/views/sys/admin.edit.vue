@@ -6,24 +6,21 @@
         <div class="form-outer">
             <h2 class="form-header">{{metaName}}</h2>
             <Form ref="formData" :model="formData" :rules="ruleValidate" :label-width="120">
-                <Form-item label="闸道名称" prop="name">
+                <Form-item label="姓名" prop="name">
                     <Input v-model.trim="formData.name" placeholder="请输入"></Input>
                 </Form-item>
-                <Form-item label="所属分组" prop="gate_group">
-                    <Select v-model="formData.gate_group" filterable>
-                        <Option :value="gate.id" :key="gate.id" v-for="gate in gateGroupList" :label="gate.name"></Option>
+                <Form-item label="登录邮箱" prop="email">
+                    <Input v-model.trim="formData.email" placeholder="请输入"></Input>
+                </Form-item>
+                <Form-item label="分配角色" prop="role">
+                    <Select v-model="formData.role" filterable>
+                        <Option :value="role.id" :key="role.id" v-for="role in roleAll" :label="role.name"></Option>
                     </Select>
                 </Form-item>
-                <Form-item label="闸机应用IP地址" prop="ip">
-                    <Input v-model.trim="formData.ip" placeholder="请输入"></Input>
-                </Form-item>
-                <Form-item label="通信端口" prop="port">
-                    <Input v-model.trim="formData.port" placeholder="请输入"></Input>
-                </Form-item>
-                <Form-item label="开启人脸识别" prop="status">
+                <Form-item label="状态" prop="status">
                     <i-switch size="large" v-model="switchStatus" @on-change="changeSwitch">
-                        <span slot="open">开启</span>
-                        <span slot="close">关闭</span>
+                        <span slot="open">激活</span>
+                        <span slot="close">管理</span>
                     </i-switch>
                 </Form-item>
                 <div class="form-footer">
@@ -39,34 +36,30 @@ export default {
     data() {
         return {
             switchStatus: true,
-            dateRangeValue: [], // 日历范围控件
-            rangeOptions: this.$store.getters.dateRangeOptions, // 日历控件参数
             editInfor: {}, // 表单详情
-            gateGroupList: [],
+            roleAll: [],
             formData: { // 表单提交Data
                 id: '',
                 name: '',
-                gate_group: '',
-                ip: '',
-                port: '',
-                face_status: 1,
+                role: '',
+                email: '',
+                status: 1,
             },
             ruleValidate: { // 表单验证
                 name: [{
                     required: true,
-                    message: '请填写闸道名称'
+                    message: '请填写姓名'
                 }],
-                gate_group: [{
+                role: [{
                     required: true,
-                    message: '请选择闸机所属分组'
+                    message: '请选择角色'
                 }],
-                ip: [{
+                email: [{
                     required: true,
-                    message: '请填应用IP地址'
-                }],
-                port: [{
-                    required: true,
-                    message: '请填写端口'
+                    message: '请填写Email'
+                }, {
+                    type: 'email',
+                    message: '请输入合法的Email'
                 }]
             }
         }
@@ -76,21 +69,21 @@ export default {
             return this.$store.getters.metaName;
         },
         isEdit() { // 是否为编辑
-            return this.$route.name == 'gate.edit';
+            return this.$route.name == 'admin.edit';
         }
     },
     beforeRouteEnter: (to, from, next) => {
-        const isEdit = to.name === 'company.edit';
-        app.$apis.gateGroupAll().then(res => {
+        const isEdit = to.name === 'admin.edit';
+        app.$apis.roleAll().then(res => {
             next(app => {
-                app.setGateGroupAll(res.data || [])
+                app.setRoleAll(res.data || [])
             })
         });
     },
     created() {
         // 若为编辑则获取详情
         if (this.isEdit) {
-            this.$apis.gateInfo({
+            this.$apis.roleInfo({
                 id: this.$route.params.id
             }).then(res => {
                 this.editInfor = res.data;
@@ -106,19 +99,19 @@ export default {
         // 提交成功后返回
         submitBack() {
             this.$router.push({
-                name: 'gate'
+                name: 'sys'
             });
         },
         // switchChange
         changeSwitch(status) {
-            this.formData.face_status = status ? 1 : 0;
+            this.formData.status = status ? 1 : 0;
         },
-        setGateGroupAll(data) {
-            this.gateGroupList = data || [];
+        setRoleAll(data) {
+            this.roleAll = data || [];
         },
         setInfo() {
             var editInfor = this.$util.assign({}, this.editInfor);
-            this.switchStatus = editInfor.face_status == 1;
+            this.switchStatus = editInfor.status == 1;
             this.$util.assign(this.formData, editInfor);
         },
         // 清除日历控件
@@ -136,7 +129,7 @@ export default {
         handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    this.$apis.gateEdit(this.formData).then(res => {
+                    this.$apis.roleEdit(this.formData).then(res => {
                         if (this.isEdit) {
                             this.goBack();
                         } else {
@@ -152,8 +145,6 @@ export default {
             this.$refs[name].resetFields();
             if (this.isEdit) {
                 this.setInfo();
-            } else {
-                this.$refs.dateRange.handleClear();
             }
         }
     }

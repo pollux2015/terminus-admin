@@ -40,6 +40,20 @@ export default {
     'faceDel': 'GET,/face/delete',
     'faceFrozen': 'GET,/face/frozen',
 
+    // 角色管理
+    'roleAll': 'GET,/role/all',
+    'roleList': 'GET,/role/list',
+    'roleInfo': 'GET,/role/info',
+    'roleEdit': 'GET,/role/edit',
+    'roleDel': 'GET,/role/delete',
+
+    // 后台用户管理
+    'adminList': 'GET,/admin/list',
+    'adminInfo': 'GET,/admin/info',
+    'adminEdit': 'GET,/admin/edit',
+    'adminDel': 'GET,/admin/delete',
+    'adminFrozen': 'GET,/admin/frozen',
+
 
 
 
