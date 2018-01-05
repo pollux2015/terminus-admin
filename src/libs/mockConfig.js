@@ -75,6 +75,35 @@ Mock.mock(aipurl_.menus, {
 
 
 /**-----------------------------------
+ * 首页
+ 'statistics': 'GET,/home/statistics',
+ 'livedata': 'GET,/home/livedata',
+ -----------------------------------*/
+Mock.mock(aipurl_.statistics, {
+    code: 1,
+    'data': {
+        'gate_total|50-900': 50,
+        'user_total|50-900': 50,
+        'company_total|50-900': 50,
+        'flow_total|50-900': 50,
+    }
+});
+
+Mock.mock(aipurl_.livedata, {
+    code: 1,
+    'data|25': [{
+        'id': '@id',
+        'gate|1': ['东大门1号闸', '西大门2号闸', '北大门3号闸'],
+        'direction|+1': [1, 2],
+        'direction_msg|+1': ['出', '入'],
+        'name|1': '@cname',
+        'company|1': ['深圳市一只牛科技有限公司', '深圳市盛大有限公司', '深圳市腾达科技有限公司'],
+        'pass_way|1': ['RFID', '蓝牙', '人脸识别'],
+        'pass_time': '@datetime'
+    }]
+});
+
+/**-----------------------------------
  * 单位管理
  'companyAll': 'GET,/admin/company/all',
  'companyList': 'GET,/admin/company/index',
@@ -304,7 +333,7 @@ Mock.mock(aipurl_.faceInfo, {
         'gates': '1,2',
         'start_time': '2018-01-01',
         'end_time': '2018-06-06',
-        'pass_time|1-100': 1, 
+        'pass_time|1-100': 1,
         'face_group|1': 'http://img.zcool.cn/community/01f6075a4defa1a8012197417988f6.jpg,http://img.zcool.cn/community/018eaf5a4defaea80121974199542b.jpg@1280w_1l_2o_100sh.jpg',
     }
 });
@@ -359,7 +388,7 @@ Mock.mock(aipurl_.roleInfo, {
     'data': {
         'id': '@id',
         'name': '@cname',
-        'limits': '1,3,4', 
+        'limits': '1,3,4',
         'status|1': [1, 0]
     }
 });
@@ -384,7 +413,7 @@ Mock.mock(aipurl_.roleDel, {
  'adminDel': 'GET,/admin/delete',
  'adminFrozen': 'GET,/admin/frozen',
  -----------------------------------*/
- Mock.mock(aipurl_.adminList, {
+Mock.mock(aipurl_.adminList, {
     code: 1,
     data: {
         page: PAGE,
@@ -409,7 +438,7 @@ Mock.mock(aipurl_.adminInfo, {
         'gates': '1,2',
         'start_time': '2018-01-01',
         'end_time': '2018-06-06',
-        'pass_time|1-100': 1, 
+        'pass_time|1-100': 1,
         'face_group|1': 'http://img.zcool.cn/community/01f6075a4defa1a8012197417988f6.jpg,http://img.zcool.cn/community/018eaf5a4defaea80121974199542b.jpg@1280w_1l_2o_100sh.jpg',
     }
 });
@@ -428,8 +457,3 @@ Mock.mock(aipurl_.adminFrozen, {
     code: 1,
     'msg': '冻结成功'
 });
-
-
-
-
-

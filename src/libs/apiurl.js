@@ -8,6 +8,10 @@ export default {
     'logout': 'POST,/admin/index/logout',
     'menus': 'GET,/admin/index/menu',
 
+    // 首页
+    'statistics': 'GET,/home/statistics',
+    'livedata': 'GET,/home/livedata',
+
 	// 单位管理
     'companyAll': 'GET,/admin/company/all',
     'companyList': 'GET,/admin/company/index',
