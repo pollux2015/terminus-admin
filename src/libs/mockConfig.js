@@ -42,7 +42,7 @@ Mock.mock(aipurl_.menus, {
     code: 1,
     data: [{
         id: 1,
-        icon: 'cube',
+        icon: 'android-home',
         url: 'home',
         name: '首页'
     }, {

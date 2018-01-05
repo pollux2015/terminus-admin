@@ -252,7 +252,7 @@ export default {
 
 .homecard,
 .card-info-mask {
-    transition: all 2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .circle-inner{font-size: 12px;}

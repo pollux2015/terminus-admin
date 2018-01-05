@@ -15,7 +15,7 @@
                             <Avatar src="https://i.loli.net/2017/08/21/599a521472424.jpg" />
                             <DropdownMenu slot="list">
                                 <DropdownItem>设置</DropdownItem>
-                                <DropdownItem>退出系统</DropdownItem>
+                                <DropdownItem><div @click="logout">退出系统</div></DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                     </div>
@@ -76,7 +76,14 @@ export default {
             this.$router.push({
                 name
             });
-        }
+        },
+        logout() { // 退出登录
+            this.$apis.logout().then(res => {
+                this.$router.push({
+                    name: 'login'
+                })
+            });
+        },
     }
 };
 </script>
